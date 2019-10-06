@@ -1,63 +1,59 @@
-import { Component,  AfterViewInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent {
 
-  public ngAfterViewInit() {
-    
-    let move = 0;
-
-    for (let i = 0; i < 9; i++) {
-         document.getElementById('game').innerHTML += '<div class="block" style="height: 5rem; width: 5rem; border: 2px solid black;  float: left; box-sizing: border-box; line-height: 5rem; text-align: center;"></div>';
-          
-        }
-
-    document.getElementById('game').onclick = function (event) {
-      console.log(event);
-      if (event.target.className == 'block') {
-        if (move %2 ==0) {
-          event.target.innerHTML = 'O';
-        }
-        else
-        event.target.innerHTML = 'X';
-      }
-      move++;
-      checkWinner();
-    }
-
-    function checkWinner(){
-      let playField = document.getElementsByClassName('block');
-      if (playField[0].innerHTML && playField[1].innerHTML && playField[2].innerHTML == 'O') {
-        console.log('yes');
-      }
-    }
-  }
-
-
-  title = 'training';
-
-  // let init = function(){
-  //   for (let i = 0; i < 9; i++) {
-  //     document.getElementById('game').innerHTML += '<div class="block"></div>';
-      
-  //   }
-  // };
-  // init();
+  grid = [];
+  ship;
+  countShip1 = 4;
+  countShip2 = 3;
+  countShip3 = 2;
+  countShip4 = 1;
   
-  // $window.onload = function(e) { //your magic here } 
-
-  // func() {
-  //   let elem = document.getElementById('test');
-  //   elem.style.color='red';
-  //   elem.style.fontSize = '16px';
-
-    
+  reset(){
+    this.countShip1 = 4;
+    this.countShip2 = 3;
+    this.countShip3 = 2;
+    this.countShip4 = 1;
   }
 
+  constructor() {
+    for(let i = 0;i < 10; i++){
+      this.grid[i]=[];
+      for (let j = 0; j < 10; j++) {
+        this.grid[i][j]={
+          ship: false
+        };
+      }
+    }
+  }
+
+  onClick(item : number){
+    // if(this.ship){
+    //   for (let i = 0; i < this.ship; i++) {
+    //     this.grid[item+i].value = 1;
+    //   }
+      
+
+    // }
+    // this.grid[item].value = 1;
+  }
+
+  onShip(ship: number){
+    // if( this['countShip' + ship]){
+      this.ship=ship;
+      
+
+
+    // }
+
+  }
+
+}
 
 
 

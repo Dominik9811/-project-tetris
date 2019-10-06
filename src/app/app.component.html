@@ -1,6 +1,25 @@
 <!-- <input type="text" value="!" id="test">
 <input type="submit" (click)="func()"> -->
 
-<div id="game"></div>
+<button class="btn" (click)="onShip(1)">1</button>
+<button class="btn" (click)="onShip(2)">2</button>
+<button class="btn" (click)="onShip(3)">3</button>
+<button class="btn" (click)="onShip(4)">4</button>
+
+<div id="game">
+    
+
+    <div class="row" *ngFor="let row of this.grid; index as i">
+        <div 
+            *ngFor="let item of row; index as j" 
+            class="block"
+            (click)="onClick(item)"
+        >
+            {{item.ship}}
+        </div>
+    </div>
+
+
+</div>
 
 
